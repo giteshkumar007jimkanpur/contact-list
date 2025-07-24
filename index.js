@@ -5,6 +5,7 @@ const PORT = process.env.PORT;
 
 const express = require('express')
 const app = express();
+app.disable("x-powered-by");
 const path = require('path');
 const Contact = require('./models/contacts');
 
