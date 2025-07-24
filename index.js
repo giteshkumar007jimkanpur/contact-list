@@ -46,14 +46,16 @@ app.get('/delete-contact', async (req, res) => {
     const phone = req.query.id;
     // const contactIndex = contactList.findIndex(contact => contact.phone == phone)
     // contactList.splice(contactIndex, 1)
-    await Contact.findOneAndDelete({ phone });
+    const query = { phone }
+    await Contact.findOneAndDelete(query);
     return res.redirect(req.get('referer'));
 })
 
 app.post('/create-contact', async (req, res) => {
     const { name, phone } = req.body;
     // contactList.push({ name, phone });
-    await Contact.create({ name, phone });
+    const query = { name, phone };
+    await Contact.create(query);
     return res.redirect(req.get('referer'))
 })
 
